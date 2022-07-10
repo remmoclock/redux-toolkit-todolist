@@ -1,31 +1,29 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = [
-  { id: 1, text: "Faire les courses", done: false },
-  { id: 2, text: "Ménage !", done: true },
-];
-
 export const todoSlice = createSlice({
   name: "todo",
-  initialState,
+  initialState: [
+    { id: 1, text: "Faire les courses", done: false },
+    { id: 2, text: "Ménage !", done: true },
+  ],
   reducers: {
-    increment: (state) => {
+    addTask: (state) => {
       // Redux Toolkit allows us to write "mutating" logic in reducers. It
       // doesn't actually mutate the state because it uses the Immer library,
       // which detects changes to a "draft state" and produces a brand new
       // immutable state based off those changes
       state.value += 1;
     },
-    decrement: (state) => {
+    toggleDoneTask: (state) => {
       state.value -= 1;
     },
-    incrementByAmount: (state, action) => {
+    deleteTask: (state, action) => {
       state.value += action.payload;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount } = todoSlice.actions;
+export const { addTask, toggleDoneTask, deleteTask } = todoSlice.actions;
 
-export default todoSlice.reducer;
+export default todoSlice;

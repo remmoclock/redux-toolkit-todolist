@@ -1,49 +1,48 @@
-import { useState } from "react";
 import "./styles.css";
 import TaskForm from "./TaskForm";
 import TasksHeader from "./TasksHeader";
 import TasksList from "./TasksList";
 
 export default function App() {
-  const [tasks, setTasks] = useState();
+  // const [tasks, setTasks] = useState();
 
-  const addTask = (text) => {
-    const newTask = {
-      text,
-      id: Date.now(),
-      done: false,
-    };
+  // const addTask = (text) => {
+  //   const newTask = {
+  //     text,
+  //     id: Date.now(),
+  //     done: false,
+  //   };
 
-    setTasks([...tasks, newTask]);
-  };
+  //   setTasks([...tasks, newTask]);
+  // };
 
-  const deleteTask = (id) => {
-    const filteredTasks = tasks.filter((t) => t.id !== id);
-    setTasks(filteredTasks);
-  };
+  // const deleteTask = (id) => {
+  //   const filteredTasks = tasks.filter((t) => t.id !== id);
+  //   setTasks(filteredTasks);
+  // };
 
-  const toggleTask = (id) => {
-    const realTask = tasks.find((t) => t.id === id);
-    const index = tasks.findIndex((t) => t.id === id);
-    const taskCopy = { ...realTask };
-    const tasksListCopy = [...tasks];
+  // const toggleTask = (id) => {
+  //   const realTask = tasks.find((t) => t.id === id);
+  //   const index = tasks.findIndex((t) => t.id === id);
+  //   const taskCopy = { ...realTask };
+  //   const tasksListCopy = [...tasks];
 
-    taskCopy.done = !taskCopy.done;
-    tasksListCopy[index] = taskCopy;
-    setTasks(tasksListCopy);
-  };
+  //   taskCopy.done = !taskCopy.done;
+  //   tasksListCopy[index] = taskCopy;
+  //   setTasks(tasksListCopy);
+  // };
 
   return (
     <div className="container">
       <article>
-        <TasksHeader tasks={tasks} />
+        <TasksHeader />
         <TasksList
-          tasks={tasks}
-          toggleTask={toggleTask}
-          deleteTask={deleteTask}
+          // tasks={tasks}
+          // toggleTask={toggleTask}
+          // deleteTask={deleteTask}
         />
         <footer>
-          <TaskForm addTask={addTask} />
+          <TaskForm />
         </footer>
       </article>
     </div>
