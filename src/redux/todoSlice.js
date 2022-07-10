@@ -7,18 +7,25 @@ export const todoSlice = createSlice({
     { id: 2, text: "Ménage !", done: true },
   ],
   reducers: {
-    addTask: (state) => {
+    addTask: (state, action) => {
       // Redux Toolkit allows us to write "mutating" logic in reducers. It
       // doesn't actually mutate the state because it uses the Immer library,
       // which detects changes to a "draft state" and produces a brand new
       // immutable state based off those changes
-      state.value += 1;
+      const newTask = {
+        id: Date.now(),
+        done: false,
+        text: action.payload,
+      };
+      state.push(newTask);
     },
-    toggleDoneTask: (state) => {
-      state.value -= 1;
+    toggleDoneTask: (state, action) => {
+      const task = state.find((t) => t.id === action.payload);
+      task.done = !task.done;
     },
     deleteTask: (state, action) => {
-      state.value += action.payload;
+      state = state.filter((t) => t.id !== action.payload);
+      return state
     },
   },
 });

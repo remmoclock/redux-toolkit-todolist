@@ -1,5 +1,9 @@
+import { useDispatch } from "react-redux";
+import { toggleDoneTask, deleteTask } from "./redux/todoSlice";
+
 const TaskItem = (props) => {
-  const { task, toggleTask, deleteTask } = props;
+  const { task } = props;
+  const dispatch = useDispatch();
 
   return (
     <div>
@@ -7,12 +11,12 @@ const TaskItem = (props) => {
         <input
           type="checkbox"
           checked={task.done}
-          onChange={() => toggleTask(task.id)}
+          onChange={() => dispatch(toggleDoneTask(task.id))}
         />
-        {task.text}
+        <span className={`${task.done && "checked"}`}>{task.text}</span>
 
         <span
-          onClick={() => deleteTask(task.id)}
+          onClick={() => dispatch(deleteTask(task.id))}
           role="button"
           style={{ padding: "5px", marginLeft: "20px" }}
         >

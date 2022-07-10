@@ -1,24 +1,15 @@
-import { useSelector, useDispatch } from 'react-redux'
-import { decrement, increment } from './redux/todoSlice'
-
-
+import { useSelector } from "react-redux";
 
 const TasksHeader = () => {
-  const tasks = useSelector((state) => state)
-  const dispatch = useDispatch()
+  const tasks = useSelector((state) => state.todo);
 
-  console.log("task", tasks);
-  
-  // const undoneTasks = tasks.filter((t) => t.done === false);
+  const undoneTasks = tasks.filter((t) => t.done === false);
 
   return (
     <header>
       <h1>React Todo List</h1>
       <p>
-        Tâches à faire : <strong>
-          {/* {undoneTasks.length} */}
-          test
-          </strong>
+        Tâches à faire : <strong>{undoneTasks.length}</strong>
       </p>
     </header>
   );
