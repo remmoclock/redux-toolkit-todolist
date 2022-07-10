@@ -5,10 +5,7 @@ import TasksHeader from "./TasksHeader";
 import TasksList from "./TasksList";
 
 export default function App() {
-  const [tasks, setTasks] = useState([
-    { id: 1, text: "Faire les courses", done: false },
-    { id: 2, text: "Ménage !", done: true },
-  ]);
+  const [tasks, setTasks] = useState();
 
   const addTask = (text) => {
     const newTask = {
